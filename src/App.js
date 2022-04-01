@@ -1,11 +1,18 @@
+import "./App.css";
 
-import './App.css';
-import Counter from "./Component/Counter"
+import React from "react";
+
+import Header from "./Component/Header";
+
+import CounterMatch from "./Component/CounterMatch";
 function App() {
   return (
-    <div>
-    <Counter></Counter>
-    </div>
+    <>
+      <Header />
+      <div className="bodyContainer">
+        <CounterMatch />
+      </div>
+    </>
   );
 }
 

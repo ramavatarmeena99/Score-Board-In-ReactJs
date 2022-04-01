@@ -1,0 +1,50 @@
+/* .teams {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+} */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+button {
+  width: 50vh;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 20px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* .teams {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+.teams .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.teams .buttons button {
+  width: 50%;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 20px;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} */
