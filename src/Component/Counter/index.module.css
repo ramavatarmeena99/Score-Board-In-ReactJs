@@ -56,7 +56,7 @@
 .matchSummery {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .totalScore p {
   font-size: 40px;
