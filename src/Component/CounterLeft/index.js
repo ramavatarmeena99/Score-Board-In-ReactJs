@@ -211,14 +211,13 @@ export default function CounterLeft() {
     <div className={Style.teams}>
       <h1>{teamAName}</h1>
       <div className={Style.totalScore}>
-        {/* <p>Score =</p> */}
         <p className={Style.value}>{scoreATeam}</p>
         <p className={Style.valueTeamB}>/{teamAwickets}</p>
       </div>
       <div className={Style.buttons}>
         <div className={Style.matchSummery}>
           <div className={Style.remainingTeamAOvers}>
-            <p>Remaining Over ={remainingTeamAOvers}</p>
+            <p>Remaining Over = {remainingTeamAOvers}</p>
           </div>
           <div className={Style.match}>
             <p className={Style.overs}>{currentBallsTeamA}.</p>

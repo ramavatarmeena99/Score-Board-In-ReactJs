@@ -208,7 +208,7 @@ export default function CounterRight() {
       <div className={Style.buttons}>
         <div className={Style.matchSummery}>
           <div className={Style.remainingTeamAOvers}>
-            <p>Remaining Over ={remainingTeamBOvers}</p>
+            <p>Remaining Over = {remainingTeamBOvers}</p>
           </div>
           <div className={Style.match}>
             <p className={Style.overs}>{currentBallsTeamB}.</p>

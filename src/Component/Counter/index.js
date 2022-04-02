@@ -5,14 +5,20 @@ import CounterLeft from "../CounterLeft";
 
 import CounterMatch from "../CounterMatch";
 import CounterRight from "../CounterRight";
+import MatchResult from "../MatchResult";
 import Style from "./index.module.css";
 export default function Counter() {
   const [stay, setStay] = useState(true);
-  const endMatch = () => {
-    localStorage.clear();
+  const [end, setEnd] = useState(true);
+
+  const seeResult = () => {
     setStay(false);
   };
+  const endMatch = () => {
+    localStorage.clear();
 
+    setEnd(false);
+  };
   return (
     <>
       {stay ? (
@@ -28,11 +34,22 @@ export default function Counter() {
             </div>
           </div>
           <div className={Style.endButton}>
-            <Button action={endMatch} buttonText="End Match" />
+            <Button action={seeResult} buttonText="See Match Result" />
           </div>
         </div>
       ) : (
-        <CounterMatch />
+        <>
+          {end ? (
+            <div className={Style.seeMatchResult}>
+              <MatchResult />
+              <div className={Style.endMAtch}>
+                <Button action={endMatch} buttonText="Finish Match" />
+              </div>
+            </div>
+          ) : (
+            <CounterMatch />
+          )}
+        </>
       )}
     </>
   );

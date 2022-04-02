@@ -1,0 +1,73 @@
+.lastMatch {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.result {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.teamAResult {
+  width: 40%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.teamBResult {
+  width: 40%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.team {
+  width: 100%;
+  height: 10%;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+.team h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+h2 {
+  font-size: 20px;
+  padding-top: 20px;
+  font-weight: 500;
+}
+
+.teamBSummery {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.teamASummery {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-top: 10px;
+}
