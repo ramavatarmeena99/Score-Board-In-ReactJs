@@ -11,6 +11,7 @@ export default function CounterMatch() {
   const [start, setStart] = useState(true);
   const [teamA, setTeamA] = useState("");
   const [teamB, setTeamB] = useState("");
+  const [overs, setOvers] = useState("");
 
   const [currentMatchStatus, setCurrentMatchStatus] = useState(false);
 
@@ -19,14 +20,33 @@ export default function CounterMatch() {
   };
 
   const startMatch = () => {
-    setStart(false);
     setValueInLocalStorage("teama", teamA);
     setValueInLocalStorage("teamb", teamB);
+    setValueInLocalStorage("over", overs);
+    setValueInLocalStorage("remaining_over_for_a", overs);
+    setValueInLocalStorage("remaining_over_for_b", overs);
+    if (getValueFromLocalStorage("teama", teamA) === "") {
+      alert("please Enter Team A Name");
+
+      return;
+    }
+    if (getValueFromLocalStorage("teamb", teamB) === "") {
+      alert("please Enter Team B Name");
+
+      return;
+    }
+    if (getValueFromLocalStorage("over", overs) === "") {
+      alert("please Enter Overs");
+      return;
+    }
+    setStart(false);
   };
 
   useEffect(() => {
     var currentRunningMatchCheck =
-      getValueFromLocalStorage("teama") && getValueFromLocalStorage("teamb");
+      getValueFromLocalStorage("teama") &&
+      getValueFromLocalStorage("teamb") &&
+      getValueFromLocalStorage("over");
     setCurrentMatchStatus(currentRunningMatchCheck);
   }, []);
 
@@ -57,6 +77,13 @@ export default function CounterMatch() {
                   placeholder="Enter Team B Name"
                   type={"text"}
                 />
+
+                <input
+                  onChange={(e) => setOvers(e.target.value)}
+                  value={overs}
+                  placeholder="Enter Overs"
+                  type={"text"}
+                />
               </div>
 
               <div className="buttom">
@@ -66,7 +93,7 @@ export default function CounterMatch() {
               </div>
             </div>
           ) : (
-            <Counter />
+            <Counter overs={overs} />
           )}
         </>
       )}
