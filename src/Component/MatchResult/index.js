@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { getValueFromLocalStorage } from "../../utils/helper";
 import Style from "./index.module.css";
 
 export default function MatchResult() {
+  const [winner, setWinner] = useState();
+  var winnerTeamA = getValueFromLocalStorage("teama");
+  console.log(winnerTeamA);
+  var winnerTeamB = getValueFromLocalStorage("teamb");
+  console.log(winnerTeamB);
+
+  useEffect(() => {
+    if (winnerTeamA >= winnerTeamB) {
+      setWinner(winnerTeamA);
+    } else {
+      setWinner(winnerTeamB);
+    }
+  }, [winnerTeamA, winnerTeamB]);
+
   return (
-    <div className={Style.lastMatch}>
+    <div className={Style.top}>
       <div className={Style.result}>
         <div className={Style.teamAResult}>
           <div className={Style.team}>
@@ -47,8 +61,17 @@ export default function MatchResult() {
               {getValueFromLocalStorage("teambBalls")}
             </h2>
 
-            <h2> Score = {getValueFromLocalStorage("teambScore")}/</h2>
+            <h2>
+              {" "}
+              Score = {getValueFromLocalStorage("teambScore")}/
+              {getValueFromLocalStorage("teambWickets")}
+            </h2>
           </div>
+        </div>
+      </div>
+      <div className={Style.whoWin}>
+        <div className={Style.winner}>
+          <p>Winner = {winner}</p>
         </div>
       </div>
     </div>
