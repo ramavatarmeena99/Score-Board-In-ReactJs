@@ -24,8 +24,6 @@
 
   border-radius: 10px;
   background-color: black;
-  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
@@ -53,10 +51,7 @@
   align-items: center;
   border-bottom: 1px solid grey;
 }
-/* .team h2 {
-  font-size: 20px;
-  font-weight: 500;
-} */
+
 h2 {
   font-size: 20px;
   padding-top: 20px;
@@ -87,7 +82,7 @@ h2 {
 .winner {
   width: auto;
   height: 100%;
-  background-color: steelblue;
+  background-color: green;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,4 +97,31 @@ h2 {
 .whoWin p {
   font-size: 30px;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 500px) {
+  .top {
+    padding-top: 30px;
+  }
+  .result {
+    flex-direction: column;
+  }
+  .teamAResult {
+    width: 90%;
+    height: auto;
+  }
+  .teamBResult {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+  }
+  h2 {
+    padding-top: 10px;
+  }
+  .whoWin {
+    margin-top: 40px;
+  }
+  .winner {
+    background-color: green;
+  }
 }
