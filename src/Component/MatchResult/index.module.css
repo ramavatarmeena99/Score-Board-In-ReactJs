@@ -15,31 +15,28 @@
 
 .teamAResult {
   width: 40%;
-  height: 60%;
-
+  height: auto;
   display: flex;
   flex-direction: column;
-
   align-items: flex-start;
-
   border-radius: 10px;
   background-color: black;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+  padding: 20px 0px;
 }
 .teamBResult {
   width: 40%;
-  height: 60%;
-
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 10px;
-
   background-color: black;
-
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  padding: 20px 0px;
 }
 .team {
   width: 100%;
@@ -53,28 +50,29 @@
 }
 
 h2 {
-  font-size: 20px;
-  padding-top: 20px;
+  font-size: 18px;
+  padding-top: 10px;
   font-weight: 500;
 }
 
 .teamBSummery {
   display: flex;
   flex-direction: column;
-
+  width: 100%;
+  height: auto;
   padding-left: 15px;
-  padding-top: 10px;
 }
 .teamASummery {
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   padding-left: 15px;
-  padding-top: 10px;
 }
 .whoWin {
   width: 100%;
   height: 7vh;
-  /* background-color: red; */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,6 +95,20 @@ h2 {
 .whoWin p {
   font-size: 30px;
   font-weight: 500;
+}
+.resultInRow {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+.resultInRowLeft {
+  width: 50%;
+  height: auto;
+}
+.resultInRowRight {
+  width: 50%;
+  height: auto;
 }
 
 @media only screen and (max-width: 500px) {

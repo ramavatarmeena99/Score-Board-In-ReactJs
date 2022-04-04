@@ -14,6 +14,12 @@ export default function CounterLeft() {
   const [totalOversTeamA, setTotalOversTeamA] = useState(0);
   const [currentBallsTeamA, setcurrentBallsTeamA] = useState(0);
 
+  const teamAMatchOverHandler = () => {
+    alert("MATCH OVER TEAM A");
+    setValueInLocalStorage("team_a_match_over", true);
+    window.location.reload();
+  };
+
   const plusOneRun = () => {
     if (totalOversTeamA + 1 === 6) {
       setTotalOversTeamA(0);
@@ -26,14 +32,14 @@ export default function CounterLeft() {
     }
 
     if (teamAwickets + 1 === 11) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
 
       setTotalOversTeamA(totalOversTeamA);
       return;
     }
     if (remainingTeamAOvers === 0) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
@@ -54,14 +60,14 @@ export default function CounterLeft() {
       setTotalOversTeamA(totalOversTeamA + 1);
     }
     if (teamAwickets + 1 === 11) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
 
       setTotalOversTeamA(totalOversTeamA);
       return;
     }
     if (remainingTeamAOvers === 0) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
@@ -83,13 +89,13 @@ export default function CounterLeft() {
       setTotalOversTeamA(totalOversTeamA + 1);
     }
     if (teamAwickets + 1 === 11) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
     }
     if (remainingTeamAOvers === 0) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
@@ -111,14 +117,14 @@ export default function CounterLeft() {
       setTotalOversTeamA(totalOversTeamA + 1);
     }
     if (teamAwickets + 1 === 11) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
 
       setTotalOversTeamA(totalOversTeamA);
       return;
     }
     if (remainingTeamAOvers === 0) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
@@ -139,14 +145,14 @@ export default function CounterLeft() {
       setTotalOversTeamA(totalOversTeamA + 1);
     }
     if (teamAwickets + 1 === 11) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
 
       setTotalOversTeamA(totalOversTeamA);
       return;
     }
     if (remainingTeamAOvers === 0) {
-      alert("Match Over");
+      teamAMatchOverHandler();
       setcurrentBallsTeamA(currentBallsTeamA);
       setTotalOversTeamA(totalOversTeamA);
       return;
@@ -155,23 +161,6 @@ export default function CounterLeft() {
     setValueInLocalStorage("teamaOvers", currentBallsTeamA);
   };
 
-  const resetTeamAScore = () => {
-    setValueInLocalStorage("teamaScore", 0);
-    setscoreATeam(0);
-
-    setValueInLocalStorage("teamaBalls", 0);
-    setTotalOversTeamA(0);
-
-    setValueInLocalStorage("teamaWickets", 0);
-    setteamAwickets(0);
-    setValueInLocalStorage("teamaOvers", 0);
-    setcurrentBallsTeamA(0);
-    setRemainingTeamAOvers(getValueFromLocalStorage("over"));
-    setValueInLocalStorage(
-      "remaining_over_for_a",
-      getValueFromLocalStorage("over")
-    );
-  };
   useEffect(() => {
     var scoreA = getValueFromLocalStorage("teamaScore");
     if (!scoreA) {
@@ -231,7 +220,6 @@ export default function CounterLeft() {
         <Button action={plusSixRun} buttonText="+6" />
         <Button action={teamAwicket} buttonText="Wicket" />
         <Button action={teamAOver} buttonText="No Runs" />
-        <Button action={resetTeamAScore} buttonText="Reset" />
       </div>
     </div>
   );

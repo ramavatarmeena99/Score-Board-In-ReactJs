@@ -13,6 +13,13 @@ export default function CounterRight() {
   const [totalOversTeamB, setTotalOversTeamB] = useState(0);
   const [currentBallsTeamB, setcurrentBallsTeamB] = useState(0);
   const [teamBwickets, setteamBwickets] = useState(0);
+
+  const teamBMatchOverHandler = () => {
+    alert("MATCH OVER TEAM B");
+    setValueInLocalStorage("team_b_match_over", true);
+    window.location.reload();
+  };
+
   const plus1Run = () => {
     if (totalOversTeamB + 1 === 6) {
       setTotalOversTeamB(0);
@@ -24,13 +31,13 @@ export default function CounterRight() {
       setTotalOversTeamB(totalOversTeamB + 1);
     }
     if (teamBwickets + 1 === 11) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     if (remainingTeamBOvers === 0) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
@@ -53,13 +60,13 @@ export default function CounterRight() {
       setTotalOversTeamB(totalOversTeamB + 1);
     }
     if (teamBwickets + 1 === 11) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     if (remainingTeamBOvers === 0) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
@@ -80,13 +87,13 @@ export default function CounterRight() {
       setTotalOversTeamB(totalOversTeamB + 1);
     }
     if (teamBwickets + 1 === 11) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     if (remainingTeamBOvers === 0) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
@@ -108,13 +115,13 @@ export default function CounterRight() {
       setTotalOversTeamB(totalOversTeamB + 1);
     }
     if (teamBwickets + 1 === 11) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     if (remainingTeamBOvers === 0) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
@@ -135,37 +142,19 @@ export default function CounterRight() {
       setTotalOversTeamB(totalOversTeamB + 1);
     }
     if (teamBwickets + 1 === 11) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     if (remainingTeamBOvers === 0) {
-      alert("Match Over");
+      teamBMatchOverHandler();
       setcurrentBallsTeamB(currentBallsTeamB);
       setTotalOversTeamB(totalOversTeamB);
       return;
     }
     setValueInLocalStorage("teambBalls", totalOversTeamB + 1);
     setValueInLocalStorage("teambOvers", currentBallsTeamB);
-  };
-  const resetTeamBScore = () => {
-    setValueInLocalStorage("teambScore", 0);
-    setscoreBTeam(0);
-
-    setValueInLocalStorage("teambBalls", 0);
-    setTotalOversTeamB(0);
-
-    setValueInLocalStorage("teambWickets", 0);
-    setteamBwickets(0);
-    setValueInLocalStorage("teambOvers", 0);
-    setcurrentBallsTeamB(0);
-    setValueInLocalStorage("remaining_over_for_b", 0);
-    setRemainingTeamBOvers(getValueFromLocalStorage("over"));
-    setValueInLocalStorage(
-      "remaining_over_for_b",
-      getValueFromLocalStorage("over")
-    );
   };
 
   useEffect(() => {
@@ -222,7 +211,6 @@ export default function CounterRight() {
         <Button action={plus6Run} buttonText="+6" />
         <Button action={teamBwicket} buttonText="Wicket" />
         <Button action={teamBOver} buttonText="No Runs" />
-        <Button action={resetTeamBScore} buttonText="Reset" />
       </div>
     </div>
   );

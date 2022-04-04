@@ -5,19 +5,33 @@ import Style from "./index.module.css";
 
 export default function MatchResult() {
   const [winner, setWinner] = useState();
+
   var winnerTeamA = getValueFromLocalStorage("teama");
-  console.log(winnerTeamA);
   var winnerTeamB = getValueFromLocalStorage("teamb");
-  console.log(winnerTeamB);
+  var scoreA = getValueFromLocalStorage("teamaScore");
+  var scoreB = getValueFromLocalStorage("teamaScore");
+  var wicketsA = getValueFromLocalStorage("teamaWickets");
+  var wicketsB = getValueFromLocalStorage("teambWickets");
 
   useEffect(() => {
-    if (winnerTeamA >= winnerTeamB) {
+    if (scoreA <= scoreB) {
       setWinner(winnerTeamA);
     } else {
       setWinner(winnerTeamB);
     }
-  }, [winnerTeamA, winnerTeamB]);
-
+  }, [scoreA, scoreB, winnerTeamA, winnerTeamB]);
+  if (scoreA === "") {
+    scoreA = 0;
+  }
+  if (scoreB === "") {
+    scoreB = 0;
+  }
+  if (wicketsA === "") {
+    wicketsA = 0;
+  }
+  if (wicketsB === "") {
+    wicketsB = 0;
+  }
   return (
     <div className={Style.top}>
       <div className={Style.result}>
@@ -27,22 +41,47 @@ export default function MatchResult() {
           </div>
 
           <div className={Style.teamASummery}>
-            <h2>Name = {getValueFromLocalStorage("teama")}</h2>
-            <h2>Total Over = {getValueFromLocalStorage("over")}</h2>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Name</h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>= {getValueFromLocalStorage("teama")}</h2>
+              </div>
+            </div>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Total Over</h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>= {getValueFromLocalStorage("over")}</h2>
+              </div>
+            </div>
 
-            <h2>
-              Remaining Over ={" "}
-              {getValueFromLocalStorage("remaining_over_for_a")}
-            </h2>
-            <h2>
-              Total Played Over = {getValueFromLocalStorage("teamaOvers")}.
-              {getValueFromLocalStorage("teamaBalls")}
-            </h2>
-            <h2>
-              {" "}
-              Score = {getValueFromLocalStorage("teamaScore")}/
-              {getValueFromLocalStorage("teamaWickets")}
-            </h2>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Played Over </h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>
+                  {" "}
+                  = {getValueFromLocalStorage("teamaOvers")}.
+                  {getValueFromLocalStorage("teamaBalls")}
+                </h2>
+              </div>
+            </div>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Score </h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>
+                  {" "}
+                  = {getValueFromLocalStorage("teamaScore")}/
+                  {getValueFromLocalStorage("teamaWickets")}
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
         <div className={Style.teamBResult}>
@@ -50,22 +89,45 @@ export default function MatchResult() {
             <h3>Team B</h3>
           </div>
           <div className={Style.teamBSummery}>
-            <h2>Name = {getValueFromLocalStorage("teamb")}</h2>
-            <h2>Total Over = {getValueFromLocalStorage("over")}</h2>
-            <h2>
-              Remaining Over ={" "}
-              {getValueFromLocalStorage("remaining_over_for_b")}
-            </h2>
-            <h2>
-              Total Played Over = {getValueFromLocalStorage("teambOvers")}.
-              {getValueFromLocalStorage("teambBalls")}
-            </h2>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Name</h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>= {getValueFromLocalStorage("teamb")}</h2>
+              </div>
+            </div>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Total Over</h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>= {getValueFromLocalStorage("over")}</h2>
+              </div>
+            </div>
 
-            <h2>
-              {" "}
-              Score = {getValueFromLocalStorage("teambScore")}/
-              {getValueFromLocalStorage("teambWickets")}
-            </h2>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Played Over </h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>
+                  = {getValueFromLocalStorage("teambOvers")}.
+                  {getValueFromLocalStorage("teambBalls")}
+                </h2>
+              </div>
+            </div>
+            <div className={Style.resultInRow}>
+              <div className={Style.resultInRowLeft}>
+                <h2>Score </h2>
+              </div>
+              <div className={Style.resultInRowRight}>
+                <h2>
+                  = {getValueFromLocalStorage("teambScore")}/
+                  {getValueFromLocalStorage("teambWickets")}
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>

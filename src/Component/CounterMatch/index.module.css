@@ -7,6 +7,8 @@
   justify-content: center;
 }
 .createMatch {
+  width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
 }
@@ -25,8 +27,16 @@
   align-items: center;
   justify-content: flex-end;
 }
-.createTeams input {
-  width: 30%;
+.inputField {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inputField input {
+  width: 40%;
   height: 50px;
   color: white;
   font-size: 16px;
@@ -43,4 +53,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.clickButtom {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.note {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.note p {
+  font-size: 20px;
+  color: seagreen;
+}
+.alert {
+  width: 40%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+h3 {
+  color: red;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 500;
+}
+@media only screen and (max-width: 500px) {
+  .clickCreateMatch {
+    width: 300px;
+  }
+  .inputField input {
+    width: 70%;
+  }
+  .note p {
+    font-size: 13px;
+  }
+
+  .clickButtom {
+    width: 50%;
+    height: auto;
+  }
+  .alert {
+    width: 70%;
+  }
 }

@@ -1,5 +1,8 @@
-import { useState } from "react";
-import { getValueFromLocalStorage } from "../../utils/helper";
+import { useEffect, useState } from "react";
+import {
+  getValueFromLocalStorage,
+  setValueInLocalStorage,
+} from "../../utils/helper";
 import Button from "../Button";
 import CounterLeft from "../CounterLeft";
 
@@ -10,15 +13,72 @@ import Style from "./index.module.css";
 export default function Counter() {
   const [stay, setStay] = useState(true);
   const [end, setEnd] = useState(true);
+  // const [editMatch, setEditMatch] = useState();
+
+  const [isMatchOver, setIsMatchOver] = useState(false);
+
+  useEffect(() => {
+    let aMatch = getValueFromLocalStorage("team_a_match_over");
+    let bMatch = getValueFromLocalStorage("team_b_match_over");
+
+    const isMatchOverFromLocalStirage = aMatch && bMatch;
+    setIsMatchOver(isMatchOverFromLocalStirage);
+  }, []);
 
   const seeResult = () => {
-    setStay(false);
+    if (isMatchOver) {
+      setStay(false);
+    } else {
+      alert("Note: You have to play as many overs as you have chosen");
+      return;
+    }
+
+    // if (wicket === 10) {
+    //   setStay(true);
+    // }
+  };
+  const resetScore = () => {
+    setValueInLocalStorage("team_a_match_over", false);
+
+    setValueInLocalStorage("teamaScore", 0);
+
+    setValueInLocalStorage("teamaBalls", 0);
+
+    setValueInLocalStorage("teamaWickets", 0);
+
+    setValueInLocalStorage("teamaOvers", 0);
+
+    setValueInLocalStorage(
+      "remaining_over_for_a",
+      getValueFromLocalStorage("over")
+    );
+    setValueInLocalStorage("team_b_match_over", false);
+
+    setValueInLocalStorage("teambScore", 0);
+
+    setValueInLocalStorage("teambBalls", 0);
+
+    setValueInLocalStorage("teambWickets", 0);
+
+    setValueInLocalStorage("teambOvers", 0);
+
+    setValueInLocalStorage(
+      "remaining_over_for_b",
+      getValueFromLocalStorage("over")
+    );
+
+    window.location.reload();
+  };
+  const editMatch = () => {
+    setValueInLocalStorage("isEdit", true);
+    window.location.reload();
   };
   const endMatch = () => {
     localStorage.clear();
 
     setEnd(false);
   };
+
   return (
     <>
       {stay ? (
@@ -34,7 +94,11 @@ export default function Counter() {
             </div>
           </div>
           <div className={Style.endButton}>
-            <Button action={seeResult} buttonText="See Match Result" />
+            <div className={Style.resetScore}>
+              <Button action={seeResult} buttonText="See Match Result" />
+              <Button action={resetScore} buttonText="Reset Both Team Score" />
+              <Button action={editMatch} buttonText="Edit" />
+            </div>
           </div>
         </div>
       ) : (
@@ -42,8 +106,10 @@ export default function Counter() {
           {end ? (
             <div className={Style.seeMatchResult}>
               <MatchResult />
-              <div className={Style.endMAtch}>
-                <Button action={endMatch} buttonText="Finish Match" />
+              <div className={Style.endMatchReturn}>
+                <div className={Style.endMatch}>
+                  <Button action={endMatch} buttonText="Finish Match" />
+                </div>
               </div>
             </div>
           ) : (
