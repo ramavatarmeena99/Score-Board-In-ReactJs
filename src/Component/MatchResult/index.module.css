@@ -48,7 +48,9 @@
   align-items: center;
   border-bottom: 1px solid grey;
 }
-
+.team h3 {
+  color: white;
+}
 h2 {
   font-size: 18px;
   padding-top: 10px;

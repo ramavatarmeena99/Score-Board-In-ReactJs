@@ -15,6 +15,8 @@ export default function CounterMatch() {
   const [showTeamA, setShowTeamA] = useState(null);
   const [showTeamB, setShowTeamB] = useState(null);
   const [showOver, setShowOver] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
+
   const [currentMatchStatus, setCurrentMatchStatus] = useState(false);
 
   const displayHideHandler = () => {
@@ -31,6 +33,7 @@ export default function CounterMatch() {
     setValueInLocalStorage("remaining_over_for_b", overs);
     if (getValueFromLocalStorage("teama", teamA) === "") {
       setShowTeamA(true);
+      setIsEdit(false);
       setTimeout(() => {
         setShowTeamA(false);
       }, 2000);
@@ -40,6 +43,8 @@ export default function CounterMatch() {
     }
     if (getValueFromLocalStorage("teamb", teamB) === "") {
       setShowTeamB(true);
+      setIsEdit(false);
+
       setTimeout(() => {
         setShowTeamB(false);
       }, 2000);
@@ -49,6 +54,8 @@ export default function CounterMatch() {
     }
     if (getValueFromLocalStorage("over", overs) === "") {
       setShowOver(true);
+      setIsEdit(false);
+
       setTimeout(() => {
         setShowOver(false);
       }, 2000);
@@ -57,11 +64,8 @@ export default function CounterMatch() {
       };
     }
     setStart(false);
-
     window.location.reload();
   };
-
-  const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     var currentRunningMatchCheck =

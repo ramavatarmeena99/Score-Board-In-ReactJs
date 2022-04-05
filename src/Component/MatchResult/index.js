@@ -9,12 +9,12 @@ export default function MatchResult() {
   var winnerTeamA = getValueFromLocalStorage("teama");
   var winnerTeamB = getValueFromLocalStorage("teamb");
   var scoreA = getValueFromLocalStorage("teamaScore");
-  var scoreB = getValueFromLocalStorage("teamaScore");
+  var scoreB = getValueFromLocalStorage("teambScore");
   var wicketsA = getValueFromLocalStorage("teamaWickets");
   var wicketsB = getValueFromLocalStorage("teambWickets");
 
   useEffect(() => {
-    if (scoreA <= scoreB) {
+    if (scoreA >= scoreB) {
       setWinner(winnerTeamA);
     } else {
       setWinner(winnerTeamB);
