@@ -74,7 +74,6 @@ export default function CounterMatch() {
       getValueFromLocalStorage("over");
     setIsEdit(getValueFromLocalStorage("isEdit"));
     setCurrentMatchStatus(currentRunningMatchCheck);
-
     setTeamA(getValueFromLocalStorage("teama"));
     setTeamB(getValueFromLocalStorage("teamb"));
     setOvers(getValueFromLocalStorage("over"));
