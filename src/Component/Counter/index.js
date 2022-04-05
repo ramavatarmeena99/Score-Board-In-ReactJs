@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import {
+  editMatchHandlerFromUtils,
   getValueFromLocalStorage,
-  setValueInLocalStorage,
+  resetMatchHandelrFromUtils,
 } from "../../utils/helper";
 import Button from "../Button";
 import CounterLeft from "../CounterLeft";
@@ -13,8 +14,6 @@ import Style from "./index.module.css";
 export default function Counter() {
   const [stay, setStay] = useState(true);
   const [end, setEnd] = useState(true);
-  // const [editMatch, setEditMatch] = useState();
-
   const [isMatchOver, setIsMatchOver] = useState(false);
 
   useEffect(() => {
@@ -32,78 +31,15 @@ export default function Counter() {
       alert("Note: You have to play as many overs as you have chosen");
       return;
     }
-
-    // if (wicket === 10) {
-    //   setStay(true);
-    // }
   };
   const resetScore = () => {
-    setValueInLocalStorage("team_a_match_over", false);
-
-    setValueInLocalStorage("teamaScore", 0);
-
-    setValueInLocalStorage("teamaBalls", 0);
-
-    setValueInLocalStorage("teamaWickets", 0);
-
-    setValueInLocalStorage("teamaOvers", 0);
-
-    setValueInLocalStorage(
-      "remaining_over_for_a",
-      getValueFromLocalStorage("over")
-    );
-    setValueInLocalStorage("team_b_match_over", false);
-
-    setValueInLocalStorage("teambScore", 0);
-
-    setValueInLocalStorage("teambBalls", 0);
-
-    setValueInLocalStorage("teambWickets", 0);
-
-    setValueInLocalStorage("teambOvers", 0);
-
-    setValueInLocalStorage(
-      "remaining_over_for_b",
-      +getValueFromLocalStorage("over")
-    );
-
-    window.location.reload();
+    resetMatchHandelrFromUtils();
   };
   const editMatch = () => {
-    setValueInLocalStorage("isEdit", true);
-    setValueInLocalStorage("team_a_match_over", false);
-
-    setValueInLocalStorage("teamaScore", 0);
-
-    setValueInLocalStorage("teamaBalls", 0);
-
-    setValueInLocalStorage("teamaWickets", 0);
-
-    setValueInLocalStorage("teamaOvers", 0);
-
-    setValueInLocalStorage(
-      "remaining_over_for_a",
-      getValueFromLocalStorage("over")
-    );
-    setValueInLocalStorage("team_b_match_over", false);
-
-    setValueInLocalStorage("teambScore", 0);
-
-    setValueInLocalStorage("teambBalls", 0);
-
-    setValueInLocalStorage("teambWickets", 0);
-
-    setValueInLocalStorage("teambOvers", 0);
-
-    setValueInLocalStorage(
-      "remaining_over_for_b",
-      +getValueFromLocalStorage("over")
-    );
-    window.location.reload();
+    editMatchHandlerFromUtils();
   };
   const endMatch = () => {
     localStorage.clear();
-
     setEnd(false);
   };
 

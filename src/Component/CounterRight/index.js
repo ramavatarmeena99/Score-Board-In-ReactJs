@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Button";
-import Style from "./index.module.css";
 
 import {
   getValueFromLocalStorage,
   setValueInLocalStorage,
 } from "../../utils/helper";
+import MatchScoreBoard from "../MatchScoreBoard";
 export default function CounterRight() {
   const [teamBName, setTeamBName] = useState(0);
   const [remainingTeamBOvers, setRemainingTeamBOvers] = useState();
@@ -188,30 +188,20 @@ export default function CounterRight() {
     setTeamBName(getValueFromLocalStorage("teamb"));
   }, []);
   return (
-    <div className={Style.teams}>
-      <h1>{teamBName}</h1>
-      <div className={Style.totalScore}>
-        <p className={Style.valueTeamB}>{scoreBTeam}</p>
-        <p className={Style.valueTeamB}>/{teamBwickets}</p>
-      </div>
-      <div className={Style.buttons}>
-        <div className={Style.matchSummery}>
-          <div className={Style.remainingTeamAOvers}>
-            <p>Remaining Over = {remainingTeamBOvers}</p>
-          </div>
-          <div className={Style.match}>
-            <p className={Style.overs}>{currentBallsTeamB}.</p>
-            <p className={Style.overs}>{totalOversTeamB}</p>
-            <p className={Style.over}>overs</p>
-          </div>
-        </div>
-
-        <Button action={plus1Run} buttonText="+1" />
-        <Button action={plus4Run} buttonText="+4" />
-        <Button action={plus6Run} buttonText="+6" />
-        <Button action={teamBwicket} buttonText="Wicket" />
-        <Button action={teamBOver} buttonText="No Runs" />
-      </div>
-    </div>
+    <>
+      <MatchScoreBoard
+        teamName={teamBName}
+        scoreTeam={scoreBTeam}
+        teamwickets={teamBwickets}
+        remainingTeamOvers={remainingTeamBOvers}
+        currentBallsTeam={totalOversTeamB}
+        totalOversTeam={currentBallsTeamB}
+      />
+      <Button action={plus1Run} buttonText="+1" />
+      <Button action={plus4Run} buttonText="+4" />
+      <Button action={plus6Run} buttonText="+6" />
+      <Button action={teamBwicket} buttonText="Wicket" />
+      <Button action={teamBOver} buttonText="No Runs" />
+    </>
   );
 }
