@@ -3,9 +3,8 @@ import Style from "./index.module.css";
 export default function MatchScoreBoard(props) {
   return (
     <div className={Style.teams}>
-      <div className={Style.teamName}>
-        <h1>{props.teamName}</h1>
-      </div>
+      <h1>{props.teamName}</h1>
+
       <div className={Style.totalScore}>
         <p className={Style.value}>{props.scoreTeam}</p>
         <p className={Style.valueTeamB}>/{props.teamwickets}</p>

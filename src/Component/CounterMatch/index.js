@@ -31,7 +31,7 @@ export default function CounterMatch() {
     setValueInLocalStorage("over", overs);
     setValueInLocalStorage("remaining_over_for_a", overs);
     setValueInLocalStorage("remaining_over_for_b", overs);
-    if (getValueFromLocalStorage("teama", teamA) === "") {
+    if (getValueFromLocalStorage("teama", teamA) === null) {
       setIsEdit(false);
       setShowTeamA(true);
       setTimeout(() => {
@@ -41,7 +41,7 @@ export default function CounterMatch() {
         clearTimeout(showTeamA);
       };
     }
-    if (getValueFromLocalStorage("teamb", teamB) === "") {
+    if (getValueFromLocalStorage("teamb", teamB) === null) {
       setIsEdit(false);
       setShowTeamB(true);
       setTimeout(() => {
